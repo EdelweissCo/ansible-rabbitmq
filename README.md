@@ -1,70 +1,39 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+**Table of Contents**
 
-- [ansible-rabbitmq](#ansible-rabbitmq)
-  - [Build Status](#build-status)
-  - [Requirements](#requirements)
-  - [Vagrant](#vagrant)
-  - [Role Variables](#role-variables)
-  - [Dependencies](#dependencies)
-  - [Example Playbook](#example-playbook)
-  - [License](#license)
-  - [Author Information](#author-information)
+- [Changelog](#Changelog)
+- [Instructions](#Instructions)
+- [License](#License)
+- [Author](#Author)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+## Changelog
 
-# ansible-rabbitmq
+- Forked [Ansible-RabbitMQ](https://github.com/mrlesmithjr/ansible-rabbitmq) by [Larry Smith Jr](https://github.com/mrlesmithjr)
+- Added all vagrant hosts to *rabbitmq_cluster* ansible group
+- Pinned RabbitMQ version to 3.6.16-2 (the latest version allowing all dependencies to be satisfied in the existing setup)
+- Enabled port forwarding in Vagrantfile
+- Removed default port forwarding rules and added forwarding for port 15672 for the master node
 
-An [Ansible](https://www.ansible.com) role to install/configure [RabbitMQ](https://www.rabbitmq.com/)
+## Instructions
 
-## Build Status
-
-[![Build Status](https://travis-ci.org/mrlesmithjr/ansible-rabbitmq.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-rabbitmq)
-
-## Requirements
-
-Ensure hostnames are resolvable prior to clustering...either update /etc/hosts
-or ensure DNS is working.
-
-## Vagrant
-
-Spin up a 3 node HA Cluster for testing...
 Install Ansible role on your host:
 
 ```bash
 sudo ansible-galaxy install -r requirements.yml -f
 ```
 
-Now spin up your environment...
+Now spin up the environment...
 
 ```bash
-vagrant up
+cd Vagrant && vagrant up
 ```
 
-When you are done testing, tear it all down...
-
-```bash
-./cleanup.sh
-```
-
-## Role Variables
-
-[Role Defaults](./defaults/main.yml)
-
-## Dependencies
-
-None
-
-## Example Playbook
-
-[Example Playbook](./playbook.yml)
+Open [http://localhost:15672](http://localhost:15672) in your browser and use *rabbitmqadmin* / *rabbitmqadmin* to log in.
 
 ## License
 
 MIT
 
-## Author Information
+## Author
 
 Larry Smith Jr.
 
