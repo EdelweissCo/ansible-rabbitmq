@@ -42,7 +42,7 @@ additional_nics_dhcp = false
 #Define the number of additional nics to add
 additional_nics_num = 1
 ansible_groups = {
-  "test-nodes" => ["node[0:#{N-1}]"]
+  "rabbitmq_cluster" => ["node[0:#{N-1}]"]
 }
 #Define Vagrant box to load
 box = "ubuntu/trusty64"
@@ -54,24 +54,14 @@ desktop = false
 #Define if custom boxes should be used...defined in nodes var..
 enable_custom_boxes = false
 #Define if port forwards should be enabled (true|false)
-enable_port_forwards = false
+enable_port_forwards = true
 #Defines if nodes should be linked from master VM (true|false)
 linked_clones = false
 port_forwards = [
   {
     :node => "node0",
-    :guest => 3306,
-    :host => 3306
-  },
-  {
-    :node => "node0",
-    :guest => 80,
-    :host => 8080
-  },
-  {
-    :node => "node0",
-    :guest => 8000,
-    :host => 8000
+    :guest => 15672,
+    :host => 15672
   }
 ]
 #Define if provisioners should run (true|false)
